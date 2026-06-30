@@ -1,0 +1,1925 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DAILY DOZE CAFE</title>
+    <meta name="description"
+        content="DAILY DOZE CAFE — luxury café with premium coffee, pizzas, burgers, sandwiches, wraps, and a cozy showcase experience." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --bg-2: #1a120d;
+            --panel: rgba(255, 255, 255, 0.06);
+            --panel-strong: rgba(255, 255, 255, 0.11);
+            --text: #f6ebda;
+            --muted: #bda88b;
+            --brown: #3b2416;
+            --brown-2: #5b341d;
+            --gold: #d4af37;
+            --gold-soft: #f3d889;
+            --line: rgba(255, 255, 255, 0.14);
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(212, 175, 55, 0.16), transparent 24%),
+                linear-gradient(135deg, var(--bg) 0%, #170d08 50%, var(--bg-2) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img,
+        video {
+            display: block;
+            width: 100%;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 70;
+            background: rgba(15, 15, 15, 0.82);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            position: relative;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--brown), #0f0f0f 60%, var(--gold));
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+        }
+
+        .logo::after {
+            content: '☕';
+            position: absolute;
+            font-size: 1.2rem;
+            color: white;
+            text-shadow: 0 0 18px var(--gold);
+        }
+
+        .logo-steam {
+            position: absolute;
+            top: 8px;
+            left: 12px;
+            width: 18px;
+            height: 18px;
+            border: 2px solid transparent;
+            border-left-color: var(--gold-soft);
+            border-top-color: var(--gold-soft);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+            opacity: 0.95;
+        }
+
+        .brand h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+        }
+
+        .brand p {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--muted);
+            padding: 8px 10px;
+            border-radius: 999px;
+            transition: 0.25s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .nav-btn {
+            padding: 10px 16px;
+            border-radius: 999px;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--brown), var(--gold));
+            box-shadow: 0 10px 24px rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            box-shadow: 0 10px 24px rgba(37, 211, 102, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--muted);
+        }
+
+        .hero {
+            padding: 56px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: relative;
+        }
+
+        .hero-slide {
+            display: none;
+            animation: heroFade 0.65s ease;
+        }
+
+        .hero-slide.active {
+            display: block;
+        }
+
+        .hero-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 18px;
+            justify-content: flex-start;
+        }
+
+        .hero-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.25s ease;
+            padding: 0;
+        }
+
+        .hero-dot.active {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        @keyframes heroFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 0.68) 60%, rgba(15, 15, 15, 0.93) 100%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 28px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold-soft);
+            font-size: 0.82rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+        }
+
+        .hero-copy h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.3rem, 4vw, 3.8rem);
+            line-height: 1.05;
+            margin-bottom: 12px;
+            color: var(--gold-soft);
+            text-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+        }
+
+        .hero-copy p {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 620px;
+            margin-bottom: 20px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.18);
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(135deg, var(--brown), var(--gold));
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-stats .pill {
+            padding: 9px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card video {
+            height: 340px;
+            object-fit: cover;
+        }
+
+        .hero-card-info {
+            padding: 16px 18px 18px;
+        }
+
+        .hero-card-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+            color: var(--gold-soft);
+        }
+
+        .hero-card-info p {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        section {
+            padding: 72px 0;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-title h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.48rem;
+            color: var(--gold-soft);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.12);
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+        }
+
+        .about-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card p,
+        .card li {
+            color: var(--muted);
+        }
+
+        .card ul {
+            margin-top: 10px;
+            padding-left: 18px;
+        }
+
+        .offer-card {
+            position: relative;
+            overflow: hidden;
+            padding: 32px;
+            border-radius: 28px;
+            border: 1px solid rgba(212, 175, 55, 0.24);
+            background: linear-gradient(135deg, rgba(59, 36, 22, 0.98), rgba(15, 15, 15, 0.96));
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            inset: -30% 60% auto auto;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent 70%);
+        }
+
+        .offer-card .coupon-tag {
+            color: var(--gold-soft);
+            font-size: 0.8rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .offer-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.38rem;
+            margin-bottom: 8px;
+        }
+
+        .offer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(212, 175, 55, 0.16);
+            color: var(--gold-soft);
+            width: max-content;
+        }
+
+        .offer-feature-list {
+            display: grid;
+            gap: 8px;
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        .offer-feature-list span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .offer-feature-list span::before {
+            content: '✦';
+            color: var(--gold-soft);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .menu-item {
+            padding: 18px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+            transition: transform .25s ease, box-shadow .25s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .menu-item .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .menu-item h4 {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .price {
+            color: var(--gold-soft);
+            font-weight: 700;
+        }
+
+        .tag {
+            color: var(--gold-soft);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .menu-item img {
+            height: 132px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .menu-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .veg-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold-soft);
+            background: rgba(212, 175, 55, 0.16);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+        }
+
+        .menu-actions .menu-btn {
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 12px;
+            color: white;
+            background: linear-gradient(135deg, var(--brown), var(--gold));
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .category-block {
+            margin-top: 22px;
+        }
+
+        .category-block h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--gold-soft);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .gallery-item {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            min-height: 180px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow);
+            transition: transform .25s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+            min-height: 380px;
+        }
+
+        .video-panel {
+            margin-top: 18px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .video-panel video {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .social-links a {
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .rating-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .review-card {
+            display: grid;
+            gap: 16px;
+        }
+
+        .review-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .review-form {
+            display: none;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .review-form.open {
+            display: grid;
+        }
+
+        .review-item {
+            border-top: 1px solid var(--line);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .review-item strong {
+            color: var(--gold-soft);
+        }
+
+        .payment-methods {
+            display: grid;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .payment-methods .payment-option {
+            justify-content: flex-start;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .order-confirmation {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .hidden-admin-structure {
+            display: none;
+        }
+
+        .hours-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .hours-list {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+        }
+
+        .hours-list.open {
+            display: block;
+        }
+
+        .map iframe {
+            width: 100%;
+            min-height: 290px;
+            border: 0;
+            border-radius: 20px;
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text);
+            outline: none;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        footer {
+            padding: 28px 0 44px;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            margin-top: 18px;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .floating-order {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 80;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--brown), var(--gold));
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 90;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-card {
+            width: min(1100px, 100%);
+            max-height: 90vh;
+            overflow: auto;
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            background: linear-gradient(145deg, rgba(16, 13, 11, 0.97), rgba(29, 20, 15, 0.98));
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-head h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--gold-soft);
+        }
+
+        .close-btn {
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+
+        .order-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+        }
+
+        .catalog-list,
+        .summary-card {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .catalog-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .catalog-item:last-child {
+            border-bottom: 0;
+        }
+
+        .catalog-item button {
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 10px;
+            color: white;
+            background: linear-gradient(135deg, var(--brown), var(--gold));
+            cursor: pointer;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            color: var(--muted);
+        }
+
+        .summary-total {
+            font-size: 1.1rem;
+            color: var(--gold-soft);
+        }
+
+        .coupon-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .coupon-row input {
+            flex: 1;
+        }
+
+        .coupon-message {
+            margin-top: 8px;
+            color: var(--gold-soft);
+            min-height: 20px;
+        }
+
+        .payment-option.active {
+            background: linear-gradient(135deg, var(--brown), var(--gold));
+            color: white;
+            border-color: rgba(212, 175, 55, 0.35);
+        }
+
+        .qty-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .qty-controls button {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 950px) {
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid,
+            .order-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item.tall {
+                grid-row: span 1;
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 16px;
+                left: 16px;
+                flex-direction: column;
+                background: rgba(18, 16, 13, 0.97);
+                border: 1px solid var(--line);
+                border-radius: 16px;
+                padding: 12px;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: inline-block;
+            }
+
+            .hero {
+                padding-top: 28px;
+            }
+
+            .hero-card video {
+                height: 240px;
+            }
+
+            .menu-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                flex-direction: column;
+                align-items: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="#home">
+                <div class="logo"><span class="logo-steam"></span></div>
+                <div>
+                    <h1>DAILY DOZE CAFE</h1>
+                    <p>Luxury Coffee • Premium Comfort</p>
+                </div>
+            </a>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a class="nav-btn nav-whatsapp"
+                            href="https://wa.me/919501217364?text=Hello%20Daily%20Doze%20Cafe!%20I%20would%20like%20to%20place%20an%20order."
+                            target="_blank" rel="noreferrer"><svg class="whatsapp-icon" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.149-.671.149-.198.297-.768.967-.94 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.759-1.653-2.055-.173-.297-.018-.458.13-.606.133-.133.297-.347.446-.521.149-.174.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.671-1.614-.92-2.214-.242-.58-.487-.5-.671-.51-.173-.008-.372-.01-.571-.01-.198 0-.521.074-.793.372-.273.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.099 3.2 5.08 4.487.709.306 1.262.49 1.695.628.712.227 1.36.195 1.872.118.572-.086 1.758-.719 2.006-1.414.248-.695.248-1.29.173-1.414-.074-.124-.273-.198-.571-.347Z" />
+                            </svg><span>Order on WhatsApp</span></a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</div>
+        </div>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-slider">
+                    <div class="hero-slide active">
+                        <div class="container hero-grid">
+                            <div class="hero-copy reveal">
+                                <div class="eyebrow">Coffee • Pizza • Premium Comfort</div>
+                                <h2>DAILY DOZE CAFE</h2>
+                                <p class="hero-sub">Crafted coffee, cozy corners, and signature comfort food for slow
+                                    mornings and
+                                    golden evenings.</p>
+                                <div class="hero-actions">
+                                    <a class="btn btn-primary" href="#menu">Explore Menu</a>
+                                    <a class="btn btn-secondary" href="#contact">Book A Table</a>
+                                </div>
+                                <div class="hero-stats">
+                                    <a class="pill rating-link"
+                                        href="https://www.google.com/maps/search/?api=1&query=DAILY+DOZE+CAFE+Jalandhar+Cantt"
+                                        target="_blank" rel="noreferrer">4.9 ★ • 320+ Google reviews</a>
+                                    <span class="pill">Google reviews ready</span>
+                                    <span class="pill">Open daily • 11:00 AM – 10:00 PM</span>
+                                </div>
+                                <div class="social-links">
+                                    <a href="https://www.instagram.com/daily_dozecafe" target="_blank"
+                                        rel="noreferrer">Instagram</a>
+                                    <a href="#contact">Visit us</a>
+                                </div>
+                            </div>
+
+                            <div class="hero-card reveal">
+                                <video autoplay muted loop playsinline
+                                    poster="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80">
+                                    <source
+                                        src="https://assets.mixkit.co/videos/preview/mixkit-barista-making-a-coffee-37767-large.mp4"
+                                        type="video/mp4" />
+                                </video>
+                                <div class="hero-card-info">
+                                    <h3>Signature Brew</h3>
+                                    <p>Golden espresso, warm interiors, and the calm confidence of a luxury café.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-slide">
+                        <div class="container hero-grid">
+                            <div class="hero-copy reveal">
+                                <div class="eyebrow">Events • Private Celebrations • Special Offers</div>
+                                <h2>Birthday Parties, Events &amp; Special Offers</h2>
+                                <p class="hero-sub">Celebrate your special moments at Daily Doze Cafe with delicious
+                                    food, a cozy atmosphere, and exclusive event offers.</p>
+                                <div class="hero-actions">
+                                    <a class="btn btn-primary whatsapp-btn"
+                                        href="https://wa.me/919501217364?text=Hello%20Daily%20Doze%20Cafe!%20I%20would%20like%20to%20place%20an%20order."
+                                        target="_blank" rel="noreferrer">
+                                        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.149-.671.149-.198.297-.768.967-.94 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.759-1.653-2.055-.173-.297-.018-.458.13-.606.133-.133.297-.347.446-.521.149-.174.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.671-1.614-.92-2.214-.242-.58-.487-.5-.671-.51-.173-.008-.372-.01-.571-.01-.198 0-.521.074-.793.372-.273.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.099 3.2 5.08 4.487.709.306 1.262.49 1.695.628.712.227 1.36.195 1.872.118.572-.086 1.758-.719 2.006-1.414.248-.695.248-1.29.173-1.414-.074-.124-.273-.198-.571-.347Z" />
+                                        </svg>
+                                        <span>Book on WhatsApp</span>
+                                    </a>
+                                </div>
+                                <div class="hero-stats">
+                                    <span class="pill">Private bookings available</span>
+                                    <span class="pill">Open daily • 11:00 AM – 10:00 PM</span>
+                                </div>
+                            </div>
+
+                            <div class="hero-card reveal">
+                                <video autoplay muted loop playsinline
+                                    poster="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80">
+                                    <source
+                                        src="https://assets.mixkit.co/videos/preview/mixkit-barista-making-a-coffee-37767-large.mp4"
+                                        type="video/mp4" />
+                                </video>
+                                <div class="hero-card-info">
+                                    <h3>Events & Gatherings</h3>
+                                    <p>From birthdays to intimate gatherings, we bring thoughtful service and indulgent
+                                        comfort.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-slide">
+                        <div class="container hero-grid">
+                            <div class="hero-copy reveal">
+                                <div class="eyebrow">WhatsApp Orders • Flat Discount</div>
+                                <h2>Order Above ₹500 &amp; Get 10% OFF</h2>
+                                <p class="hero-sub">Enjoy a flat 10% discount on WhatsApp orders above ₹500.</p>
+                                <div class="hero-actions">
+                                    <a class="btn btn-primary whatsapp-btn"
+                                        href="https://wa.me/919501217364?text=Hello%20Daily%20Doze%20Cafe!%20I%20would%20like%20to%20place%20an%20order."
+                                        target="_blank" rel="noreferrer">
+                                        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.149-.671.149-.198.297-.768.967-.94 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.759-1.653-2.055-.173-.297-.018-.458.13-.606.133-.133.297-.347.446-.521.149-.174.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.671-1.614-.92-2.214-.242-.58-.487-.5-.671-.51-.173-.008-.372-.01-.571-.01-.198 0-.521.074-.793.372-.273.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.099 3.2 5.08 4.487.709.306 1.262.49 1.695.628.712.227 1.36.195 1.872.118.572-.086 1.758-.719 2.006-1.414.248-.695.248-1.29.173-1.414-.074-.124-.273-.198-.571-.347Z" />
+                                        </svg>
+                                        <span>Order on WhatsApp</span>
+                                    </a>
+                                </div>
+                                <div class="hero-stats">
+                                    <span class="pill">Fast response on WhatsApp</span>
+                                    <span class="pill">Premium coffee & comfort food</span>
+                                </div>
+                            </div>
+
+                            <div class="hero-card reveal">
+                                <video autoplay muted loop playsinline
+                                    poster="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80">
+                                    <source
+                                        src="https://assets.mixkit.co/videos/preview/mixkit-barista-making-a-coffee-37767-large.mp4"
+                                        type="video/mp4" />
+                                </video>
+                                <div class="hero-card-info">
+                                    <h3>Quick WhatsApp Orders</h3>
+                                    <p>Place your favorites with a simple message and enjoy a flat 10% discount above
+                                        ₹500.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-dots" aria-label="Hero slider navigation">
+                    <button class="hero-dot active" type="button" data-slide="0" aria-label="Show slide 1"></button>
+                    <button class="hero-dot" type="button" data-slide="1" aria-label="Show slide 2"></button>
+                    <button class="hero-dot" type="button" data-slide="2" aria-label="Show slide 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h3>Menu</h3>
+                    <p>Luxury café favorites crafted with care.</p>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Pizzas</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
+                                alt="Pizza" />
+                            <div class="top">
+                                <h4>Country Love Pizza</h4><span class="price">₹200</span>
+                            </div>
+                            <p class="tag">Corn, Mushroom, Olives, Extra Cheese</p>
+                        </article>
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=900&q=80"
+                                alt="Pizza" />
+                            <div class="top">
+                                <h4>Farm House Pizza</h4><span class="price">₹229</span>
+                            </div>
+                            <p class="tag">Onion, Capsicum, Corn, Mushroom, Olives, Broccoli</p>
+                        </article>
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
+                                alt="Barbeque Paneer Pizza" />
+                            <div class="top">
+                                <h4>Barbeque Paneer Pizza</h4><span class="price">₹250</span>
+                            </div>
+                            <p class="tag">Capsicum, Mushroom, Paneer, Olives, Broccoli, BBQ Sauce</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veggie Paradise Pizza</h4><span class="price">₹270</span>
+                            </div>
+                            <p class="tag">Garden vegetables and premium cheese</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Green House Pizza</h4><span class="price">₹300</span>
+                            </div>
+                            <p class="tag">Fresh greens and herb delight</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Tandoori Paneer Pizza</h4><span class="price">₹310</span>
+                            </div>
+                            <p class="tag">Bold spices and charred paneer</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Makhani Paneer Pizza</h4><span class="price">₹430</span>
+                            </div>
+                            <p class="tag">Royal creamy makhani sauce</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>DDC Special Pizza</h4><span class="price">₹450</span>
+                            </div>
+                            <p class="tag">Signature café special</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Single Topping Pizza</h4><span class="price">₹160</span>
+                            </div>
+                            <p class="tag">8 inch • choose your topping</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Pasta</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=80"
+                                alt="Pasta" />
+                            <div class="top">
+                                <h4>Red Sauce Pasta</h4><span class="price">₹180</span>
+                            </div>
+                            <p class="tag">Rich tomato glaze and herbs</p>
+                        </article>
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=80"
+                                alt="Pasta" />
+                            <div class="top">
+                                <h4>Mix Sauce Pasta</h4><span class="price">₹200</span>
+                            </div>
+                            <p class="tag">Creamy and tangy blend</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Burgers</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Spicy Paneer Burger</h4><span class="price">₹140</span>
+                            </div>
+                            <p class="tag">Crisp paneer and spice</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Double Trouble Burger</h4><span class="price">₹180</span>
+                            </div>
+                            <p class="tag">Double patty delight</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Peri Peri Burger</h4><span class="price">₹170</span>
+                            </div>
+                            <p class="tag">Smoky peri peri flavor</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Loaded Burger</h4><span class="price">₹190</span>
+                            </div>
+                            <p class="tag">Cheese, sauce, and crunch</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Paneer Delight Burger</h4><span class="price">₹155</span>
+                            </div>
+                            <p class="tag">Creamy paneer burger</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veggie Burger</h4><span class="price">₹130</span>
+                            </div>
+                            <p class="tag">Fresh vegetables and herbs</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Sandwiches</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80"
+                                alt="Grilled Veg Sandwich" />
+                            <div class="top">
+                                <h4>Grilled Veg Sandwich</h4><span class="price">₹59</span>
+                            </div>
+                            <p class="tag">Classic grilled vegetables</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Makhani Paneer Sandwich</h4><span class="price">₹89</span>
+                            </div>
+                            <p class="tag">Creamy paneer blend</p>
+                        </article>
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1481070555726-e2fe8357725c?auto=format&fit=crop&w=900&q=80"
+                                alt="Sandwich" />
+                            <div class="top">
+                                <h4>DDC Special Sandwich</h4><span class="price">₹190</span>
+                            </div>
+                            <p class="tag">Jumbo café special</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Paneer Taka Tak Sandwich</h4><span class="price">₹79</span>
+                            </div>
+                            <p class="tag">Spicy, crunchy, satisfying</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Tandoori Paneer Sandwich</h4><span class="price">₹79</span>
+                            </div>
+                            <p class="tag">Smoky paneer goodness</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Paneer Cheese Corn Sandwich</h4><span class="price">₹79</span>
+                            </div>
+                            <p class="tag">Creamy and rich</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Cheese Corn Sandwich</h4><span class="price">₹59</span>
+                            </div>
+                            <p class="tag">Comforting and simple</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Garlic Bread & Snacks</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80"
+                                alt="Classic Garlic Bread" />
+                            <div class="top">
+                                <h4>Classic Garlic Bread</h4><span class="price">₹119</span>
+                            </div>
+                            <p class="tag">Golden and buttery</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Stuffed Garlic Bread</h4><span class="price">₹139</span>
+                            </div>
+                            <p class="tag">Loaded with fillings</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Mushroom Garlic Bread</h4><span class="price">₹149</span>
+                            </div>
+                            <p class="tag">Earthy and rich</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Loaded Garlic Bread</h4><span class="price">₹150</span>
+                            </div>
+                            <p class="tag">Cheesy and generous</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>DDC Garlic Bread</h4><span class="price">₹180</span>
+                            </div>
+                            <p class="tag">Signature café style</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veggie Spring Roll</h4><span class="price">₹120</span>
+                            </div>
+                            <p class="tag">Crisp and savory</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Cheesy Fries</h4><span class="price">₹149</span>
+                            </div>
+                            <p class="tag">Golden loaded fries</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Peri Peri Fries</h4><span class="price">₹129</span>
+                            </div>
+                            <p class="tag">Bold and spicy</p>
+                        </article>
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=900&q=80"
+                                alt="Fries" />
+                            <div class="top">
+                                <h4>French Fries</h4><span class="price">₹119</span>
+                            </div>
+                            <p class="tag">Classic crisp fries</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Paneer Popcorn</h4><span class="price">₹139</span>
+                            </div>
+                            <p class="tag">Crispy paneer bites</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Mushroom Popcorn</h4><span class="price">₹129</span>
+                            </div>
+                            <p class="tag">Crunchy mushroom bites</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veggie Stick</h4><span class="price">₹110</span>
+                            </div>
+                            <p class="tag">Fresh snack platter</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veg Fried Momos</h4><span class="price">₹110</span>
+                            </div>
+                            <p class="tag">8 pcs</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veg Fried Momos</h4><span class="price">₹55</span>
+                            </div>
+                            <p class="tag">4 pcs</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Noodle Spring Roll</h4><span class="price">₹100</span>
+                            </div>
+                            <p class="tag">Crisp noodle delight</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Maggi</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=900&q=80"
+                                alt="Paneer Cheese Corn Maggi" />
+                            <div class="top">
+                                <h4>Paneer Cheese Corn Maggi</h4><span class="price">₹100</span>
+                            </div>
+                            <p class="tag">Cheesy comfort bowl</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veg Maggi</h4><span class="price">₹90</span>
+                            </div>
+                            <p class="tag">Classic veggie flavor</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Onion Maggi</h4><span class="price">₹80</span>
+                            </div>
+                            <p class="tag">Simple and tasty</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Plain Maggi</h4><span class="price">₹70</span>
+                            </div>
+                            <p class="tag">Classic quick bite</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Wraps</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                                alt="Paneer Delight Wrap" />
+                            <div class="top">
+                                <h4>Paneer Delight Wrap</h4><span class="price">₹140</span>
+                            </div>
+                            <p class="tag">Soft wrap with paneer</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Harabhara Wrap</h4><span class="price">₹199</span>
+                            </div>
+                            <p class="tag">Fresh herb-packed wrap</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>DDC Special Wrap</h4><span class="price">₹179</span>
+                            </div>
+                            <p class="tag">Chef’s signature wrap</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Peri Peri Paneer Delight Wrap</h4><span class="price">₹149</span>
+                            </div>
+                            <p class="tag">Spicy paneer wrap</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Veggie Delight Wrap</h4><span class="price">₹109</span>
+                            </div>
+                            <p class="tag">Fresh crunchy filling</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Aloo Tikki Wrap</h4><span class="price">₹89</span>
+                            </div>
+                            <p class="tag">Crispy and comforting</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Hot Beverages</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80"
+                                alt="Black Coffee" />
+                            <div class="top">
+                                <h4>Black Coffee</h4><span class="price">₹50</span>
+                            </div>
+                            <p class="tag">Bold and simple</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Chocolate Coffee</h4><span class="price">₹90</span>
+                            </div>
+                            <p class="tag">Chocolatey indulgence</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Classic Coffee</h4><span class="price">₹70</span>
+                            </div>
+                            <p class="tag">Timeless favorite</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Hazelnut Coffee</h4><span class="price">₹80</span>
+                            </div>
+                            <p class="tag">Nutty warmth</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Vanilla Coffee</h4><span class="price">₹80</span>
+                            </div>
+                            <p class="tag">Soft vanilla finish</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Choco Coffee</h4><span class="price">₹80</span>
+                            </div>
+                            <p class="tag">Rich chocolate blend</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Filter Coffee</h4><span class="price">₹50</span>
+                            </div>
+                            <p class="tag">Traditional taste</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Paan Chai</h4><span class="price">₹60</span>
+                            </div>
+                            <p class="tag">Refreshing chai twist</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Adrak Chai</h4><span class="price">₹60</span>
+                            </div>
+                            <p class="tag">Ginger chai</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Chocolate Chai</h4><span class="price">₹60</span>
+                            </div>
+                            <p class="tag">Chai with cocoa</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Elaichi Chai</h4><span class="price">₹60</span>
+                            </div>
+                            <p class="tag">Cardamom chai</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Kesar Chai</h4><span class="price">₹60</span>
+                            </div>
+                            <p class="tag">Saffron chai</p>
+                        </article>
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=900&q=80"
+                                alt="Masala Chai" />
+                            <div class="top">
+                                <h4>Masala Chai</h4><span class="price">₹30</span>
+                            </div>
+                            <p class="tag">Classic spice chai</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="category-block reveal">
+                    <h4>Cold Beverages</h4>
+                    <div class="menu-grid">
+                        <article class="menu-item"><img
+                                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=80"
+                                alt="Classic Cold Coffee" />
+                            <div class="top">
+                                <h4>Classic Cold Coffee</h4><span class="price">₹109</span>
+                            </div>
+                            <p class="tag">Icy espresso refreshment</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Iced Latte</h4><span class="price">₹89</span>
+                            </div>
+                            <p class="tag">Smooth and chilled</p>
+                        </article>
+                        <article class="menu-item">
+                            <div class="top">
+                                <h4>Chocolate Chip Mocha</h4><span class="price">₹129</span>
+                            </div>
+                            <p class="tag">Chocolate indulgence</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h3>Share Your Experience</h3>
+                    <p>Google reviews and website reviews are managed separately.</p>
+                </div>
+                <div class="card reveal review-card">
+                    <div class="review-actions">
+                        <a class="btn btn-primary"
+                            href="https://www.google.com/maps/search/?api=1&query=DAILY+DOZE+CAFE+Jalandhar+Cantt"
+                            target="_blank" rel="noreferrer">Write Google Review</a>
+                        <button class="btn btn-secondary" id="openReviewForm" type="button">Website Review</button>
+                    </div>
+                    <div id="reviewFormWrap" class="review-form">
+                        <input id="reviewName" type="text" placeholder="Customer name" required />
+                        <select id="reviewRating"
+                            style="padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--text);">
+                            <option value="5">5 ★ Excellent</option>
+                            <option value="4">4 ★ Very Good</option>
+                            <option value="3">3 ★ Good</option>
+                            <option value="2">2 ★ Fair</option>
+                            <option value="1">1 ★ Poor</option>
+                        </select>
+                        <textarea id="reviewText" placeholder="Share your experience with DAILY DOZE CAFE"></textarea>
+                        <button class="btn btn-primary" id="submitReviewBtn" type="button">Submit Review</button>
+                    </div>
+                    <div id="reviewStatus" style="color: var(--gold-soft);"></div>
+                    <div id="reviewList"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h3>About DAILY DOZE CAFE</h3>
+                    <p>Established by Pal & Sons</p>
+                </div>
+                <div class="about-grid">
+                    <div class="card reveal">
+                        <p>DAILY DOZE CAFE is a cozy café offering handcrafted coffee, delicious pizzas, burgers,
+                            sandwiches, wraps, beverages and comfort food in a premium atmosphere.</p>
+                        <ul>
+                            <li>Elegant interiors and warm lighting</li>
+                            <li>Freshly prepared comfort food and coffee</li>
+                            <li>Comfortable dine-in and quick takeaway</li>
+                        </ul>
+                    </div>
+                    <div class="card reveal">
+                        <p>From morning espresso to evening pizza, each visit is curated to feel effortlessly premium
+                            and deeply comforting.</p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/daily_dozecafe" target="_blank" rel="noreferrer">📸
+                                Follow on Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h3>Contact & Visit</h3>
+                    <p>Reserve, order, or stop by for a cozy pause.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="card reveal">
+                        <h4 style="font-family:'Cormorant Garamond',serif; margin-bottom:8px; color: var(--gold-soft);">
+                            Visit Us</h4>
+                        <p>Mohalla No. 10, Shop No. 68, Sadar Bazar, Jalandhar Cantt, Jalandhar, Punjab – 144005</p>
+                        <p style="margin-top: 8px;">Phone: +91 9501217364</p>
+                        <p>WhatsApp: +91 9501217364</p>
+                        <p>Instagram: @daily_dozecafe</p>
+                        <button class="hours-toggle" type="button" id="hoursToggle">Open Daily • 11:00 AM – 10:00
+                            PM</button>
+                        <div class="hours-list" id="hoursList">
+                            Daily — 11:00 AM to 10:00 PM<br />
+                            Breakfast service begins at 11:00 AM<br />
+                            Lunch & dinner served till 10:00 PM
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/daily_dozecafe" target="_blank" rel="noreferrer">Follow
+                                Instagram</a>
+                            <a href="https://wa.me/919501217364" target="_blank" rel="noreferrer">WhatsApp</a>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <form onsubmit="event.preventDefault(); alert('Thank you! We will be in touch shortly.');">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" placeholder="Your name" required />
+                            <label for="email">Email</label>
+                            <input id="email" type="email" placeholder="you@example.com" required />
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Tell us about your visit"></textarea>
+                            <button class="btn btn-primary" type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h3>Gallery</h3>
+                    <p>Warm interiors, delicious plates, and premium moments.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal"
+                        style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80')">
+                    </div>
+                    <div class="gallery-item tall reveal"
+                        style="background-image:url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=80')">
+                    </div>
+                    <div class="gallery-item reveal"
+                        style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80')">
+                    </div>
+                    <div class="gallery-item reveal"
+                        style="background-image:url('https://images.unsplash.com/photo-1526318472351-c75fcf0700b5?auto=format&fit=crop&w=1000&q=80')">
+                    </div>
+                    <div class="gallery-item reveal"
+                        style="background-image:url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=80')">
+                    </div>
+                    <div class="gallery-item reveal"
+                        style="background-image:url('https://images.unsplash.com/photo-1481070555726-e2fe8357725c?auto=format&fit=crop&w=1000&q=80')">
+                    </div>
+                </div>
+                <div class="video-panel reveal">
+                    <video autoplay muted loop playsinline
+                        poster="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80">
+                        <source
+                            src="https://assets.mixkit.co/videos/preview/mixkit-coffee-shop-cafe-ambience-46283-large.mp4"
+                            type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section id="map">
+            <div class="container">
+                <div class="section-title reveal">
+                    <h3>Location Map</h3>
+                    <p>Mohalla No. 10, Shop No. 68, Sadar Bazar, Jalandhar Cantt, Punjab 144005</p>
+                </div>
+                <div class="map reveal">
+                    <iframe
+                        src="https://www.google.com/maps?q=Mohalla%20No.%2010,%20Shop%20No.%2068,%20Sadar%20Bazar,%20Jalandhar%20Cantt,%20Punjab%20144005&output=embed"
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a class="floating-order whatsapp-btn"
+        href="https://wa.me/919501217364?text=Hello%20Daily%20Doze%20Cafe!%20I%20would%20like%20to%20place%20an%20order."
+        target="_blank" rel="noreferrer"><svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"
+            aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.149-.671.149-.198.297-.768.967-.94 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.787-1.48-1.759-1.653-2.055-.173-.297-.018-.458.13-.606.133-.133.297-.347.446-.521.149-.174.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.671-1.614-.92-2.214-.242-.58-.487-.5-.671-.51-.173-.008-.372-.01-.571-.01-.198 0-.521.074-.793.372-.273.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.099 3.2 5.08 4.487.709.306 1.262.49 1.695.628.712.227 1.36.195 1.872.118.572-.086 1.758-.719 2.006-1.414.248-.695.248-1.29.173-1.414-.074-.124-.273-.198-.571-.347Z" />
+        </svg><span>Order on WhatsApp</span></a>
+
+    <footer>
+        <div class="container footer-row">
+            <div>© 2026 DAILY DOZE CAFE • Established by Pal & Sons</div>
+            <div>Instagram • WhatsApp • Google Reviews • Location Map</div>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('menu-toggle');
+        const links = document.getElementById('nav-links');
+        toggle && toggle.addEventListener('click', () => links.classList.toggle('open'));
+        document.querySelectorAll('#nav-links a').forEach(link => link.addEventListener('click', () => links.classList.remove('open')));
+
+        const hoursToggle = document.getElementById('hoursToggle');
+        const hoursList = document.getElementById('hoursList');
+        hoursToggle && hoursToggle.addEventListener('click', () => hoursList.classList.toggle('open'));
+
+        const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+        const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
+        let currentSlide = 0;
+        let heroTimer;
+
+        function showHeroSlide(index) {
+            currentSlide = (index + heroSlides.length) % heroSlides.length;
+            heroSlides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === currentSlide));
+            heroDots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === currentSlide));
+        }
+
+        function startHeroSlider() {
+            clearInterval(heroTimer);
+            heroTimer = setInterval(() => showHeroSlide(currentSlide + 1), 7000);
+        }
+
+        heroDots.forEach(dot => dot.addEventListener('click', () => {
+            showHeroSlide(Number(dot.getAttribute('data-slide')));
+            startHeroSlider();
+        }));
+
+        showHeroSlide(0);
+        startHeroSlider();
+
+        const reviewFormWrap = document.getElementById('reviewFormWrap');
+        const openReviewFormBtn = document.getElementById('openReviewForm');
+        const reviewNameInput = document.getElementById('reviewName');
+        const reviewRatingInput = document.getElementById('reviewRating');
+        const reviewTextInput = document.getElementById('reviewText');
+        const submitReviewBtn = document.getElementById('submitReviewBtn');
+        const reviewStatusEl = document.getElementById('reviewStatus');
+        const reviewListEl = document.getElementById('reviewList');
+
+        openReviewFormBtn && openReviewFormBtn.addEventListener('click', () => {
+            reviewFormWrap.classList.toggle('open');
+        });
+
+        const websiteReviews = [
+            { name: 'Riya', rating: 5, text: 'Elegant vibes and excellent coffee at DAILY DOZE CAFE.', date: '2026-06-15' },
+            { name: 'Aman', rating: 5, text: 'The pizzas and garlic bread are always fresh and satisfying.', date: '2026-06-20' }
+        ];
+
+        function renderReviews() {
+            reviewListEl.innerHTML = websiteReviews.map(review => `
+        <div class="review-item">
+          <strong>${review.name}</strong>
+          <div>${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+          <p style="margin: 6px 0; color: var(--muted);">${review.text}</p>
+          <small>${review.date}</small>
+        </div>
+      `).join('');
+        }
+
+        submitReviewBtn && submitReviewBtn.addEventListener('click', () => {
+            const name = reviewNameInput.value.trim();
+            const rating = Number(reviewRatingInput.value);
+            const text = reviewTextInput.value.trim();
+            if (!name || !text) {
+                reviewStatusEl.textContent = 'Please enter your name and review.';
+                return;
+            }
+            websiteReviews.unshift({ name, rating, text, date: new Date().toLocaleDateString('en-CA') });
+            reviewNameInput.value = '';
+            reviewRatingInput.value = '5';
+            reviewTextInput.value = '';
+            renderReviews();
+            reviewStatusEl.textContent = 'Thank you for your review.';
+        });
+
+        renderReviews();
+
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('visible'));
+        }, { threshold: 0.12 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
